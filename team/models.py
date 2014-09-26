@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Team(models.Model):
     name = models.CharField(max_length = 64, unique = True)
     leader = models.ForeignKey('Member', related_name = 'leader')
+    teacher = models.CharField(max_length = 64)
     isActive = models.BooleanField(default = True)
 
     def __unicode__(self):
@@ -17,9 +18,17 @@ class Team(models.Model):
 class Member(models.Model):
     team = models.ForeignKey(Team)
     user = models.ForeignKey(User)
+    isLeader = models.BooleanField(default = False)
     name = models.CharField(max_length = 16, null = True, blank = True)
     email = models.EmailField(null = True, blank = True)
     phone = models.CharField(max_length = 16, null = True, blank = True)
+    microPhone = models.CharField(max_length = 16, null = True, blank = True)
+    qq = models.CharField(max_length = 16, null = True, blank = True)
+    domitory = models.CharField(max_length = 16, null = True, blank = True)
+    sno = models.CharField(max_length = 16, null = True, blank = True)
+    collage = models.CharField(max_length = 32, null = True, blank = True)
+    major = models.CharField(max_length = 32, null = True,  blank = True)
+    sclass = models.CharField(max_length = 32, null = True, blank = True)
 
     def __unicode__(self):
         return self.team + '/' + self.name

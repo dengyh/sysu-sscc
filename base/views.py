@@ -8,14 +8,12 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 
-from team.models import Team, Member
+from section.models import Section, Picture
 
-@login_required
-def getTeamInformation(request, templateName):
-    try:
-        member = Member.objects.get(user = request.user)
-    except:
-        return HttpResponseRedirect('/')
+def getIndexView(request, templateName):
+    sections = Section.objects.all()
+    pictures = Picture.objects.all()
     return render_to_response(templateName, {
-        'member' : member,
+        'sections' : sections,
+        'pictures' : pictures,
         }, context_instance = RequestContext(request))
