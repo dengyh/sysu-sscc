@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/signUp.css">
+{% endblock %}
+
+{% block content %}
+<div class="mainbody">
+    <iframe name="sign-frame" id="sign-frame"></iframe>
+    <h1>填写报名信息</h1>
+    <form class="form-inline" role="form" id="team-form" target="sign-frame" action="/sign/" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">团队名称</div>
+                <input type="text" class="form-control" id="teamName" name="teamName" placeholder="团队名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">指导老师</div>
+                <input class="form-control" type="text" placeholder="指导老师" name="teamTeacher">
+            </div>
+        </div>
+        <div class="teamMenber">
+            <h3>队长信息</h3>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">姓名</div>
+                    <input type="text" class="form-control" id="leader-name" name="leader-name" placeholder="姓名">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">学号</div>
+                    <input type="text" class="form-control" id="leader-number" name="leader-number" placeholder="学号">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">学院</div>
+                    <input type="text" class="form-control" id="leader-collage" name="leader-collage" placeholder="学院">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                <div class="input-group-addon">专业</div>
+                <input type="text" class="form-control" id="leader-major" name="leader-major" placeholder="专业">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">班级</div>
+                    <input type="text" class="form-control" id="leader-class" name="leader-class" placeholder="班级">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">手机</div>
+                    <input type="text" class="form-control" id="leader-phone" name="leader-phone" placeholder="手机">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">短号</div>
+                    <input type="text" class="form-control" id="leader-cornet" name="leader-cornet" placeholder="短号">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">邮箱</div>
+                    <input type="text" class="form-control" id="leader-email" name="leader-email" placeholder="邮箱">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">QQ</div>
+                    <input type="text" class="form-control" id="leader-qq" name="leader-qq" placeholder="QQ">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">宿舍</div>
+                    <input type="text" class="form-control" id="leader-dormitory" name="leader-dormitory" placeholder="宿舍">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">性别</div>
+                    <select name="leader-gender" class="form-control" id="leader-gender" >
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">登录密码</div>
+                    <input type="password" class="form-control" id="leader-password1" name="leader-password1" placeholder="设置队长登录密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">确认密码</div>
+                    <input type="password" class="form-control" id="leader-password2" name="leader-password2" placeholder="确认登录密码">
+                </div>
+            </div>
+        </div>
+        <p id="submitMessage"> </p>
+        <div class="form-group">
+            <div class="input-group">
+                <button type="submit" class="btn btn-default btn-lg submit-button">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/static/js/signUp.js" type="text/javascript"></script>
+{% endblock %}

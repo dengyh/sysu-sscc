@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>{% block title %}第十届中山大学软件创新与应用大赛{% endblock %}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        {% block nav %}
+            <div class="container">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="" src="">
+                </a>
+            </div>
+            <ul class="nav navbar-nav" role="tablist">
+                <li role="presentation"><a href="/">首页</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    大赛相关<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                    {% for item in sections %}
+                        <li role="presentation"><a href="/#section{{item.id}}">{{item.title}}</a></li>
+                    {% endfor %}
+                    </ul>
+              </li>
+              <li role="presentation"><a href="/#footer">联系我们</a></li>
+              <li role="presentation"><a href="/sign/">报名</a></li>
+              {% if user %}
+              <li role="presentation" class="right-nav"><a href="/team/">{{user.username}}</a></li>
+              <li role="presentation" class="right-nav"><a href="/logout/">退出</a></li>
+              {% else %}
+              <li role="presentation" class="right-nav"><a href="/login/">登录</a></li>
+              {% endif %}
+            </ul>
+        {% endblock %}
+        </nav>
+
+        <content>
+        {% block content %}
+        {% endblock %}
+        </content>
+
+        <hr />
+        <footer>
+        {% block footer %}
+            <div id="footer">
+                <p>@Copyright 
+                    <a href="#"> 中山大学软件学院</a>
+                    <br />
+                    <a href="http://center.sysu.edu.cn">中心网站</a> | 
+                    <a href="http://weibo.com/u/2141455241">官方微博</a>
+                </p>
+            </div>
+        {% endblock %}
+        </footer>
+        <script type="text/javascript" src="/static/jquery/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

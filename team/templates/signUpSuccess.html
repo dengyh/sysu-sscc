@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/signUpSuccess.css">
+{% endblock %}
+
+{% block content %}
+<div class="mainbody">
+    <h3>您已经成功提交报名信息，你提交的信息如下：</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>队伍名称</th>
+            <th>指导老师</th>
+        </tr>
+        <tr>
+            <td>队伍名称</td>
+            <td>指导老师</td>
+        </tr>
+    </table>
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>学号</th>
+            <th>学院</th>
+            <th>专业</th>
+            <th>班级</th>
+            <th>手机</th>
+            <th>短号</th>
+            <th>邮箱</th>
+            <th>QQ</th>
+            <th>宿舍</th>
+        </tr>
+        <tr>
+            <td>黄伟鹏</td>
+            <td>男</td>
+            <td>11335071</td>
+            <td>软件学院</td>
+            <td>数字媒体</td>
+            <td>12级1班</td>
+            <td>13570416429</td>
+            <td>672975</td>
+            <td>2385367768@qq.com</td>
+            <td>2385367768</td>
+            <td>至二203</td>
+        </tr>
+    </table>
+
+    <div class="alert alert-success" role="alert">如果信息有误，队长可以登录对信息进行修改！
+    </div>
+</div>
+{% endblock %}

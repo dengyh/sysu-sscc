@@ -1,0 +1,33 @@
+.mainbody {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.form-horizontal {
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    border: solid 1px #d5e3e8;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.left {
+    width: 60%;
+    float: left;
+    padding: 10px;
+    border-right: solid 1px #d5e3e8;
+}
+
+.right {
+    width: 39%;
+    float: right;
+    padding: 20px 10px 10px 10px;
+    margin-top: 40px;
+}
+
+.wrong {
+    color: #d43f3a;
+}

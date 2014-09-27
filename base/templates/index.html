@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+{% endblock %}
+
+{% block content %}
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+        {% for item in pictures %}
+        {% if forloop.first %}
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        {% else %}
+            <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+        {% endif %}
+        {% endfor %}
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {% for item in pictures %}
+            {% if forloop.first %}
+            <div class="item active">
+            {% else %}
+            <div class="item">
+            {% endif %}
+                <img src="{{item.url.url}}" alt="{{item.description}}">
+                <div class="carousel-caption">
+                    <div class="mainbody">
+                        <h2>第十届中山大学软件创新与应用大赛</h1>
+                        <h3>欢迎来到大赛官网！</h2>
+                        <p>比赛报名已经开始了，赶紧报名吧！丰厚奖品和奖金等着你哦。</p>
+                        <span><a href="/sign/"><button type="button" class="btn btn-primary">队长报名</button></a></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <h1>大赛章程</h1>
+        
+        {% for item in sections %}
+        <div class="notice" id="section{{item.id}}">
+            <h2>{{item.title}}</h2>
+            <div>{{item.content}}</div>
+        </div>
+        {% endfor %}
+{% endblock %}

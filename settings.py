@@ -115,8 +115,10 @@ WSGI_APPLICATION = 'sysu_sscc.wsgi.application'
 CurrentFile = os.path.dirname(__file__)
 
 TEMPLATE_DIRS = (
-    os.path.join(CurrentFile, 'section/templates').replace('\\','/'),
-    os.path.join(CurrentFile, 'team/templates').replace('\\','/'),
+    os.path.join(CurrentFile, 'section/templates').replace('\\', '/'),
+    os.path.join(CurrentFile, 'team/templates').replace('\\', '/'),
+    os.path.join(CurrentFile, 'base/templates').replace('\\', '/'),
+    os.path.join(CurrentFile, 'sysuer/templates').replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
@@ -126,8 +128,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'base',
     'team',
     'section',
+    'sysuer',
     'xadmin',
     'crispy_forms',
     # Uncomment the next line to enable the admin:
@@ -135,6 +139,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 )
+
+LOGIN_URL = '/login/' 
+LOGOUT_URL = '/logout/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

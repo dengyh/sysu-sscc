@@ -1,0 +1,36 @@
+.mainbody {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+.mainbody {
+    text-align: center;
+}
+
+.teamMenber {
+    margin-top: 10px;
+    border-top: 1px solid #d5e3e8;
+    padding: 30px;
+}
+
+.form-inline .form-group {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+.submit-button {
+    width: 200px;
+}
+
+#sign-frame {
+    display: none;
+}
+
+#submitMessage {
+    color: #d43f3a;
+}
