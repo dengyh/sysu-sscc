@@ -58,38 +58,18 @@
         {% endfor %}
  <!-- 用于查看队伍 -->
  <div class="showteam">
- <div class="floatleft">
-    <div class="team_1">
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1&nbsp</span><span>队员2&nbsp</span> <span>队员&nbsp</span>
-     </div>
+    <div class="floatleft">
+        {% for item in teams %}
+        <div class="team_1">
+            <div class="teammenber">
+                <p><strong>{{item.name}}</strong></p>
+                {% for member in item.members %}
+                <span>{{member.name}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
-     <div class="teammenber">
-         <p>队伍名称</p>
-         <span>队员1</span><span>队员2</span> <span>队员</span>
-     </div>
- </div>
  <div class="floatright"><p>参赛队伍</p></div>
  </div>
 {% endblock %}

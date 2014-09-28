@@ -7,7 +7,7 @@
 {% block content %}
 <div class="mainbody">
     <iframe name="sign-frame" id="sign-frame"></iframe>
-    <h1>填写报名信息</h1>
+    <h1>填写报名信息{% if timeFlag %}<i>(还未到报名时间)</i>{% endif %}</h1>
     <form class="form-inline" role="form" id="team-form" target="sign-frame" action="/sign/" method="post">
     {% csrf_token %}
         <div class="form-group">

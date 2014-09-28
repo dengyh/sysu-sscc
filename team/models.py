@@ -37,7 +37,7 @@ class Member(models.Model):
         ), null = True, blank = True)
 
     def __unicode__(self):
-        return self.team + '/' + self.name
+        return self.team.name + '/' + self.name
 
     class Meta:
         verbose_name = u'队员'

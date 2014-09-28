@@ -12,8 +12,8 @@ class TeamAdmin(object):
     list_display = ('name', 'leader', 'teacher', 'isActive')
 
 class MemberAdmin(object):
-    list_display = ('team', 'isLeader', 'name', 'name', 'phone', 'microPhone',
-        'qq', 'domitory', 'sno', 'collage', 'major', 'sclass')
+    list_display = ('team', 'isLeader', 'name', 'name', 'phone', 'cornet',
+        'qq', 'dormitory', 'sno', 'collage', 'major', 'sclass')
 
 xadmin.site.register(Team, TeamAdmin)
 xadmin.site.register(Member, MemberAdmin)

@@ -13,6 +13,7 @@ from team.models import Team, Member
 from section.models import Section, Picture
 
 import json
+import datetime
 
 @login_required
 def getTeamInformation(request, templateName):
@@ -28,32 +29,38 @@ def getTeamInformation(request, templateName):
 def createTeam(request, templateName):
     message = ''
     if request.method == 'POST':
-        teamName = request.POST.get('teamName', '')
-        teamTeacher = request.POST.get('teamTeacher', '')
-        if teamTeacher == '' or teamName == '':
-            message = '队伍信息不完整'
+        if datetime.datetime.now() < datetime.datetime(2014, 9, 29, 0, 0):
+            message = '还未到报名时间'
         else:
-            tempTeam = Team.objects.filter(name = teamName)
-            if len(tempTeam) > 0:
-                message = '队伍名已被使用'
+            teamName = request.POST.get('teamName', '')
+            teamTeacher = request.POST.get('teamTeacher', '')
+            if teamTeacher == '' or teamName == '':
+                message = '队伍信息不完整'
             else:
-                team = Team.objects.create(
-                    name = teamName,
-                    teacher = teamTeacher
-                    )
-                message, teamFlag, leader = createLeader(request, team)
+                tempTeam = Team.objects.filter(name = teamName)
+                if len(tempTeam) > 0:
+                    message = '队伍名已被使用'
+                else:
+                    team = Team.objects.create(
+                        name = teamName,
+                        teacher = teamTeacher
+                        )
+                    message, teamFlag, leader = createLeader(request, team)
 
-                if teamFlag:
-                    return HttpResponse('true')
-                team.delete()
+                    if teamFlag:
+                        return HttpResponse('true')
+                    team.delete()
         return HttpResponse(message)
 
+    timeFlag = False
+    if datetime.datetime.now() < datetime.datetime(2014, 9, 29, 0, 0):
+        timeFlag = True
     sections = Section.objects.all()
     pictures = Picture.objects.all()
     return render_to_response(templateName, {
         'sections' : sections,
         'pictures' : pictures,
-        'numbers' : range(1, 6),
+        'timeFlag' : timeFlag,
         }, context_instance = RequestContext(request))
 
 def checkItem(item):
@@ -218,6 +225,7 @@ def deleteMember(request):
                 user.delete()
             teamers = Member.objects.filter(team = team)
             if len(teamers) < 3:
+                team.isActive = False
                 team.status = '参赛人数不足'
                 team.save()
             success = True
