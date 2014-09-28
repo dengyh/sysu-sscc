@@ -34,3 +34,50 @@ h1 {
     text-align: center;
     font-size: 48px;
 }
+
+.showteam {
+    padding: 2px;
+    width: 200px;
+    height: 400px;
+    /*border: solid 1px #dfdfdf;*/
+    position: absolute;
+    left: -166px;
+}
+
+.showteamOK {
+    padding: 2px;
+    width: 200px;
+    height: 400px;
+    /*border: solid 1px #dfdfdf;*/
+    position: absolute;
+    left: 0px;
+}
+
+.floatleft{
+    width: 166px;
+    height: 100%;
+    float: left;
+    border: solid 1px #dfdfdf;
+    background: #fffbf5;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.floatright{
+    /*padding: 4px;*/
+    text-align: center;
+    width: 27px;
+    height: auto;
+    float: right;
+    border: solid 1px #dfdfdf;
+    border-radius: 4px;
+    background: #80a8cc;
+}
+
+.teammenber {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-bottom: solid 1px #dfdfdf;
+}
