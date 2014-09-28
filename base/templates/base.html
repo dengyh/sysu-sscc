@@ -30,7 +30,7 @@
               </li>
               <li role="presentation"><a href="/#footer">联系我们</a></li>
               <li role="presentation"><a href="/sign/">报名</a></li>
-              {% if user %}
+              {% if user.is_authenticated %}
               <li role="presentation" class="right-nav"><a href="/team/">{{user.username}}</a></li>
               <li role="presentation" class="right-nav"><a href="/logout/">退出</a></li>
               {% else %}

@@ -53,7 +53,7 @@
         {% for item in sections %}
         <div class="notice" id="section{{item.id}}">
             <h2>{{item.title}}</h2>
-            <div>{{item.content}}</div>
+            <div>{{item.content | safe}}</div>
         </div>
         {% endfor %}
 {% endblock %}

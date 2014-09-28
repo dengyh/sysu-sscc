@@ -6,47 +6,179 @@
 
 {% block content %}
 <div class="mainbody">
-    <h3>您已经成功提交报名信息，你提交的信息如下：</h3>
-    <table class="table table-bordered">
-        <tr>
-            <th>队伍名称</th>
-            <th>指导老师</th>
-        </tr>
-        <tr>
-            <td>队伍名称</td>
-            <td>指导老师</td>
-        </tr>
-    </table>
-    <table class="table table-hover table-bordered">
-        <tr>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>学号</th>
-            <th>学院</th>
-            <th>专业</th>
-            <th>班级</th>
-            <th>手机</th>
-            <th>短号</th>
-            <th>邮箱</th>
-            <th>QQ</th>
-            <th>宿舍</th>
-        </tr>
-        <tr>
-            <td>黄伟鹏</td>
-            <td>男</td>
-            <td>11335071</td>
-            <td>软件学院</td>
-            <td>数字媒体</td>
-            <td>12级1班</td>
-            <td>13570416429</td>
-            <td>672975</td>
-            <td>2385367768@qq.com</td>
-            <td>2385367768</td>
-            <td>至二203</td>
-        </tr>
-    </table>
-
+    {% for member in selfs %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{member.team.name}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">队伍信息</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>队伍名称</th>
+                                <th>指导老师</th>
+                                <th>队伍状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{member.team.name}}</td>
+                                <td>{{member.team.teacher}}</td>
+                                <td id="team{{member.team.id}}">{{member.team.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">队员信息</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>学号</th>
+                                <th>学院</th>
+                                <th>专业</th>
+                                <th>班级</th>
+                                <th>手机</th>
+                                <th>短号</th>
+                                <th>邮箱</th>
+                                <th>QQ</th>
+                                <th>宿舍</th>
+                                <th>删除操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="member-list">
+                            {% for item in member.members %}
+                            {% if item.isLeader %}
+                            <tr class="active" id="member{{item.id}}">
+                            {% else %}
+                            <tr id="member{{item.id}}">
+                            {% endif %}
+                                <td>{{item.name}}</td>
+                                <td>{{item.get_gender_display}}</td>
+                                <td>{{item.sno}}</td>
+                                <td>{{item.collage}}</td>
+                                <td>{{item.major}}</td>
+                                <td>{{item.sclass}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.cornet}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.qq}}</td>
+                                <td>{{item.dormitory}}</td>
+                                {% if member.isLeader %}
+                                {% if item.isLeader %}
+                                {% else %}
+                                <td><button data-id="{{item.id}}" class="btn btn-danger btn-sm delete-member">删除</button></td>
+                                {% endif %}
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if member.isLeader %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">增加队员</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form" class="form-inline" id="create-form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">姓名</div>
+                                <input type="text" class="form-control" id="member-name" name="member-name" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">学号</div>
+                                <input type="text" class="form-control" id="member-number" name="member-number" placeholder="学号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">学院</div>
+                                <input type="text" class="form-control" id="member-collage" name="member-collage" placeholder="学院">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">专业</div>
+                                <input type="text" class="form-control" id="member-major" name="member-major" placeholder="专业">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">班级</div>
+                                <input type="text" class="form-control" id="member-class" name="member-class" placeholder="班级">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">手机</div>
+                                <input type="text" class="form-control" id="member-phone" name="member-phone" placeholder="手机">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">短号</div>
+                                <input type="text" class="form-control" id="member-cornet" name="member-cornet" placeholder="短号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">邮箱</div>
+                                <input type="text" class="form-control" id="member-email" name="member-email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">QQ</div>
+                                <input type="text" class="form-control" id="member-qq" name="member-qq" placeholder="QQ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">宿舍</div>
+                                <input type="text" class="form-control" id="member-dormitory" name="member-dormitory" placeholder="宿舍">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">性别</div>
+                                <select name="member-gender" class="form-control" id="member-gender" >
+                                    <option value="male">男</option>
+                                    <option value="female">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="form-message">&nbsp</p>
+                        <div class="form-button">
+                            <button type="submit" class="btn btn-default" id="submit-button">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
     <div class="alert alert-success" role="alert">如果信息有误，队长可以登录对信息进行修改！
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="/static/js/signUpSuccess.js"></script>
 {% endblock %}

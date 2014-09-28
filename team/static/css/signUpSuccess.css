@@ -1,5 +1,24 @@
 .mainbody {
-	width: 90%;
-	margin: 0 auto;
-	margin-top: 70px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+.form-group {
+    margin: 10px 15px;
+}
+
+.form-button {
+    width: 30%;
+    margin: 10px auto;
+}
+
+.form-button button {
+    width: 100%;
+}
+
+.form-message {
+    color: #d43f3a;
+    margin: 10px;
+    text-align: center;
 }

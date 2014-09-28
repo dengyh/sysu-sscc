@@ -7,6 +7,7 @@ class Team(models.Model):
     leader = models.ForeignKey('Member', related_name = 'leader', null = True, blank = True)
     teacher = models.CharField(max_length = 64)
     number = models.CharField(max_length = 16)
+    status = models.CharField(max_length = 64, default = '参赛人员不足')
     isActive = models.BooleanField(default = False)
 
     def __unicode__(self):

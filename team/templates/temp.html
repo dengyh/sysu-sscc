@@ -1,74 +1,14 @@
-{% for num in numbers %}
-        <div class="teamMenber">
-            <h3>队员{{num}}信息</h3>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">姓名</div>
-                    <input type="text" class="form-control" id="member-{{num}}-name" name="member-{{num}}-name" placeholder="姓名">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">学号</div>
-                    <input type="text" class="form-control" id="member-{{num}}-number" name="member-{{num}}-number" placeholder="学号">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">学院</div>
-                    <input type="text" class="form-control" id="member-{{num}}-collage" name="member-{{num}}-collage" placeholder="学院">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">专业</div>
-                    <input type="text" class="form-control" id="member-{{num}}-major" name="member-{{num}}-major" placeholder="专业">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">班级</div>
-                    <input type="text" class="form-control" id="member-{{num}}-class" name="member-{{num}}-class" placeholder="班级">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">手机</div>
-                    <input type="text" class="form-control" id="member-{{num}}-phone" name="member-{{num}}-phone" placeholder="手机">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">短号</div>
-                    <input type="text" class="form-control" id="member-{{num}}-cornet" name="member-{{num}}-cornet" placeholder="短号">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">邮箱</div>
-                    <input type="text" class="form-control" id="member-{{num}}-email" name="member-{{num}}-email" placeholder="邮箱">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">QQ</div>
-                    <input type="text" class="form-control" id="member-{{num}}-qq" name="member-{{num}}-qq" placeholder="QQ">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">宿舍</div>
-                    <input type="text" class="form-control" id="member-{{num}}-dormitory" name="member-{{num}}-dormitory" placeholder="宿舍">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">性别</div>
-                    <select name="leader-gender" class="form-control" id="leader-gender" >
-                        <option value="male">男</option>
-                        <option value="female">女</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+<tr id="member{{member.id}}">
+    <td>{{member.name}}</td>
+    <td>{{member.get_gender_display}}</td>
+    <td>{{member.sno}}</td>
+    <td>{{member.collage}}</td>
+    <td>{{member.major}}</td>
+    <td>{{member.sclass}}</td>
+    <td>{{member.phone}}</td>
+    <td>{{member.cornet}}</td>
+    <td>{{member.email}}</td>
+    <td>{{member.qq}}</td>
+    <td>{{member.dormitory}}</td>
+    <td><button data-id="{{member.id}}" class="btn btn-danger btn-sm delete-member">删除</button></td>
+</tr>
