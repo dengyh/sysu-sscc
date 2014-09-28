@@ -34,3 +34,8 @@ form {
 #submitMessage {
     color: #d43f3a;
 }
+
+.warning-message {
+    width: 40%;
+    margin: 0 auto;
+}
