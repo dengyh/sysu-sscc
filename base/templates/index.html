@@ -6,47 +6,50 @@
 
 {% block content %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+    {% for item in pictures %}
+    {% if forloop.first %}
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    {% else %}
+        <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+    {% endif %}
+    {% endfor %}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
         {% for item in pictures %}
         {% if forloop.first %}
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <div class="item active">
         {% else %}
-            <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+        <div class="item">
         {% endif %}
-        {% endfor %}
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            {% for item in pictures %}
-            {% if forloop.first %}
-            <div class="item active">
-            {% else %}
-            <div class="item">
-            {% endif %}
-                <img src="{{item.url.url}}" alt="{{item.description}}">
-                <div class="carousel-caption">
-                    <div class="mainbody">
-                        <h2>第十届中山大学软件创新与应用大赛</h1>
-                        <h3>欢迎来到大赛官网！</h2>
-                        <p>比赛报名已经开始了，赶紧报名吧！丰厚奖品和奖金等着你哦。</p>
-                        <span><a href="/sign/"><button type="button" class="btn btn-primary">队长报名</button></a></span>
-                    </div>
+            <img src="{{item.url.url}}" alt="{{item.description}}">
+            <div class="carousel-caption">
+                <div class="mainbody">
+                    <h2>第十届中山大学软件创新与应用大赛</h2>
+                    <h3>欢迎来到大赛官网！</h3>
+                    <p>比赛报名已经开始了，赶紧报名吧！丰厚奖品和奖金等着你哦。</p>
+                    <span><a href="/sign/"><button type="button" class="btn btn-primary">队长报名</button></a></span>
                 </div>
             </div>
-            {% endfor %}
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
+        {% endfor %}
+    </div>
+
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
 
         <h1>大赛章程</h1>
         
@@ -70,6 +73,7 @@
         </div>
         {% endfor %}
     </div>
+</div>
  <div class="floatright"><p>参赛队伍</p></div>
  </div>
 {% endblock %}
