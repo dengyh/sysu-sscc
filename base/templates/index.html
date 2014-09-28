@@ -23,19 +23,20 @@
             {% if forloop.first %}
             <div class="item active">
             {% else %}
-            <div class="item">
-            {% endif %}
-                <img src="{{item.url.url}}" alt="{{item.description}}">
-                <div class="carousel-caption">
-                    <div class="mainbody">
-                        <h2>第十届中山大学软件创新与应用大赛</h1>
-                        <h3>欢迎来到大赛官网！</h2>
-                        <p>比赛报名已经开始了，赶紧报名吧！丰厚奖品和奖金等着你哦。</p>
-                        <span><a href="/sign/"><button type="button" class="btn btn-primary">队长报名</button></a></span>
+                <div class="item">
+                {% endif %}
+                    <img src="{{item.url.url}}" alt="{{item.description}}">
+                    <div class="carousel-caption">
+                        <div class="mainbody">
+                            <h1>第十届中山大学软件创新与应用大赛</h1>
+                            <h3>欢迎来到大赛官网！</h3>
+                            <p>比赛报名已经开始了，赶紧报名吧！丰厚奖品和奖金等着你哦。</p>
+                            <span><a href="/sign/"><button type="button" class="btn btn-primary">队长报名</button></a></span>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
+        </div>
 
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -46,7 +47,7 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+    </div>
 
         <h1>大赛章程</h1>
         
